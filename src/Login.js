@@ -1,22 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-class Login extends React.Component {
-  render() {
-    return (
-      <div className="login-container">
-        <h2>Login</h2>
-        <form>
-          <label htmlFor="username">Username:</label>
-          <input type="text" id="username" name="username" />
+function Login() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" />
+  const handleLogin = () => {
+    console.log('Username:', username);
+    console.log('Password:', password);
+  };
 
-          <button type="submit">Login</button>
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div className="login">
+      <h2>Login</h2>
+      <form>
+        <div className="input-group">
+          <label>Username:</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div className="input-group">
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button type="button" onClick={handleLogin}>Login</button>
+      </form>
+    </div>
+  );
 }
 
 export default Login;
